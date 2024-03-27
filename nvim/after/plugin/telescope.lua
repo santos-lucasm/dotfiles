@@ -1,0 +1,1 @@
+/home/santos/.config/nvim/after/plugin/telescope.lua
