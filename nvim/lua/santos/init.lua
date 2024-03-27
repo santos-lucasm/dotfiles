@@ -1,1 +1,2 @@
-/home/santos/.config/nvim/lua/santos/init.lua
+require("santos.remap")
+require("santos.set")

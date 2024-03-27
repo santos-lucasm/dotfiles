@@ -1,1 +1,1 @@
-/home/santos/.config/nvim/init.lua
+require("santos")
