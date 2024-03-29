@@ -12,4 +12,6 @@ return require('packer').startup(function(use)
   }
   use { "ellisonleao/gruvbox.nvim" }
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use { 'neovim/nvim-lspconfig' }
+  use { 'williamboman/mason.nvim' }
 end)
