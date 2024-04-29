@@ -25,5 +25,7 @@ return require('packer').startup(function(use)
           {'L3MON4D3/LuaSnip'},
       }
   }
-
+ use { "tpope/vim-fugitive" }
+ use { "sindrets/diffview.nvim" }
+ use { "nvim-tree/nvim-web-devicons" }
 end)
