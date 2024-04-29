@@ -1,8 +1,19 @@
 ## External dependencies
 
 ```
-sudo apt install ripgrep clangd libstdc++-12-dev
+sudo add-apt-repository universe
+
+sudo apt install ripgrep clangd libstdc++-12-dev libevent-devel bison libfuse2
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+Install nvim from the most recent deploy .appimage and put it in your $PATH.
+
+Install tmux from source code.
 
 ## Comments
 
