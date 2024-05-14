@@ -28,4 +28,8 @@ return require('packer').startup(function(use)
  use { "tpope/vim-fugitive" }
  use { "sindrets/diffview.nvim" }
  use { "nvim-tree/nvim-web-devicons" }
+ use { 'akinsho/git-conflict.nvim', tag = "*", config = function ()
+     require('git-conflict').setup()
+ end}
+
 end)
