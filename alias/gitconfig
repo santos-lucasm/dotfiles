@@ -1,0 +1,14 @@
+[credential]
+	helper = store
+[core]
+	editor = nvim
+[user]
+	email = lucasmatheus@weg.net
+	name = lucasmatheus
+[alias]
+    co = checkout
+    st = status
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    unstage = reset HEAD --
+    br = branch
+    ci = commit
