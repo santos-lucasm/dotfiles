@@ -1,10 +1,9 @@
-[credential]
-	helper = store
-[core]
-	editor = nvim
 [user]
-	email = lucasmatheus@weg.net
-	name = lucasmatheus
+	mail = santos.lucasmmatheus@gmail.com
+	name = santos-lucasm
+	email = santos.lucasmmatheus@gmail.com
+[core]
+    editor = nvim
 [alias]
     co = checkout
     st = status
@@ -12,3 +11,4 @@
     unstage = reset HEAD --
     br = branch
     ci = commit
+    rup = remote update --prune
