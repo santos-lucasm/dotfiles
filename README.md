@@ -17,7 +17,7 @@ sudo add-apt-repository universe
 ```
 
 ```
-sudo apt install ripgrep clangd libstdc++-12-dev libevent-devel bison libfuse2 stow automake autotools-dev
+sudo apt install ripgrep clangd libstdc++-12-dev libevent-dev bison flex libfuse2 stow automake autotools-dev libncurses-dev
 ```
 
 2. Build from source
@@ -27,6 +27,7 @@ git clone https://github.com/tmux/tmux.git
 cd tmux
 sh autogen.sh
 ./configure && make
+sudo cp tmux /usr/local/bin/
 ```
 
 3. Download tmux plugins repository
