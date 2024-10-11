@@ -17,7 +17,7 @@ sudo add-apt-repository universe
 ```
 
 ```
-sudo apt install ripgrep clangd libstdc++-12-dev libevent-devel bison libfuse2 stow
+sudo apt install ripgrep clangd libstdc++-12-dev libevent-devel bison libfuse2 stow automake autotools-dev
 ```
 
 2. Build from source
