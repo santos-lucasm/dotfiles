@@ -36,6 +36,8 @@ sudo cp tmux /usr/local/bin/
  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+4. Open tmux, type `prefix + I` to install the plugins using the `tmux-plugins/tpm` package
+
 ### Install alacritty
 
 1. Install dependencies
