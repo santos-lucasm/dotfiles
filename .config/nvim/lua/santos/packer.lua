@@ -6,12 +6,23 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { "ellisonleao/gruvbox.nvim" }
+
+  -- use { "ellisonleao/gruvbox.nvim" }
+  use({
+      'rose-pine/neovim',
+      as = 'rose-pine',
+      config = function()
+          vim.cmd('colorscheme rose-pine')
+      end
+  })
+
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
   -- Add lsp and auto completion support
   use {
       'VonHeikemen/lsp-zero.nvim',
@@ -25,9 +36,14 @@ return require('packer').startup(function(use)
           {'L3MON4D3/LuaSnip'},
       }
   }
- use { "tpope/vim-fugitive" }
- use { "sindrets/diffview.nvim" }
- use { "nvim-tree/nvim-web-devicons" }
+
+
+ -- Git
+ use { "tpope/vim-fugitive" } -- G<everything>
+ use { "sindrets/diffview.nvim" } -- DiffOpen
+ use { "lewis6991/gitsigns.nvim", config = function () -- Hightlight changes
+     require('gitsigns').setup()
+ end} 
  use { 'akinsho/git-conflict.nvim', tag = "*", config = function ()
      require('git-conflict').setup()
  end}
