@@ -63,19 +63,19 @@ infocmp alacritty && sudo tic -xe alacritty,alacritty-direct extra/alacritty.inf
 3. Install and create a valid desktop entry
 
 ```
-sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH`
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
 ```
 
 ```
-sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg`
+sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 ```
 
 ```
-sudo desktop-file-install extra/linux/Alacritty.desktop`
+sudo desktop-file-install extra/linux/Alacritty.desktop
 ```
 
 ```
-sudo update-desktop-database`
+sudo update-desktop-database
 ```
 
 4. Update shortcut and turn alacritty into the default terminal emulator
