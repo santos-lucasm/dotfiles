@@ -17,7 +17,7 @@ sudo add-apt-repository universe
 ```
 
 ```
-sudo apt install ripgrep clangd libstdc++-12-dev libevent-dev bison flex libfuse2 stow automake autotools-dev libncurses-dev
+sudo apt install ripgrep clangd libstdc++-12-dev libevent-dev bison flex libfuse2 stow automake autotools-dev libncurses-dev curl
 ```
 
 2. Build from source
@@ -94,6 +94,6 @@ sudo update-alternatives --config x-terminal-emulator
 
 1. Add plugins configurations inside ```nvim/after/plugin/*.lua```.
 2. To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
-3. Do not forget to run the install script, source packer.lua and then run ```:PackerSync```
+3. Source packer.lua and then run ```:PackerSync```
 4. To install lsp, check :Mason
 
