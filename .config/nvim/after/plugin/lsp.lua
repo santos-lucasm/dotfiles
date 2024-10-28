@@ -33,7 +33,7 @@ end)
 -- Handle language servers
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'clangd' },
+  ensure_installed = { 'clangd', 'cmake', 'lua_ls' },
   handlers = {
     lsp_zero.default_setup,
     clangd = function()
