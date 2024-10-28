@@ -1,7 +1,6 @@
 general.import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 general.working_directory = "/home/santos/ws"
 
-
 [window]
 opacity = 0.75
 #decorations = "None"
@@ -20,3 +19,6 @@ shell.program = "tmux"
 
 [keyboard]
 bindings = [{ key = "F11", mods = "Shift", action = "ToggleFullscreen" }]
+
+[hints]
+enabled = [{ hyperlinks = true, command = "xdg-open", mouse = { enabled = true, mods = "None" } }]
