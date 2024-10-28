@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
     -- Color themes related
     use { "xiyaowong/transparent.nvim" } -- transparent on all windows
     use { "ellisonleao/gruvbox.nvim" }
+    use { "nvim-tree/nvim-web-devicons" }
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
