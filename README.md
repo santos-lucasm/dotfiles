@@ -89,6 +89,12 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --config x-terminal-emulator
 ```
 
+## To add commands to run on boot
+
+1. Edit `/etc/crontab` as sudo user
+2. Add `@reboot sudo <command | script>`
+3. To run an script, add it to `/usr/local/sbin/<created_script>`
+
 
 ## Comments
 
