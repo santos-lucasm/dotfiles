@@ -1,7 +1,7 @@
 [user]
 	mail = santos.lucasmmatheus@gmail.com
-	name = santos-lucasm
-	email = santos.lucasmmatheus@gmail.com
+	name = lucasmatheus
+	email = lucasmatheus@weg.net
 [core]
     editor = nvim
 [alias]
@@ -12,3 +12,5 @@
     br = branch
     ci = commit
     rup = remote update --prune
+[credential]
+	helper = store
