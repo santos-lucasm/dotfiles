@@ -1,14 +1,4 @@
-## External dependencies
-
-
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-Install nvim from the most recent deploy .appimage and put it in your $PATH.
-
-### Install tmux
+### tmux
 
 1. External dependencies
 
@@ -38,7 +28,39 @@ sudo cp tmux /usr/local/bin/
 
 4. Open tmux, type `prefix + I` to install the plugins using the `tmux-plugins/tpm` package
 
-### Install alacritty
+
+### neovim 
+
+1. Install packer
+
+```
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+
+2. Install nvim from the most recent deploy .appimage and put it in your $PATH.
+
+```
+chmod u+x nvim-linux-x86_64.appimage && ./nvim-linux-x86_64.appimage
+
+// if your system does not have FUSE, extract the app image
+./nvim-linux-x86_64.appimage --appimage-extract
+./squashfs-root/usr/bin/nvim
+
+// symbolic link it to your path
+ln -s /home/<full_path_required>/squashfs-root/usr/bin/nvim /usr/bin/nvim
+```
+
+3. Install plugins
+
+- To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
+- Source packer.lua and then run ```:PackerSync```
+- To install more LSPs, check :Mason
+
+New plugins configurations should be inside ```nvim/after/plugin/*.lua```.
+
+
+### alacritty
 
 1. Install dependencies
 
@@ -94,12 +116,4 @@ sudo update-alternatives --config x-terminal-emulator
 1. Edit `/etc/crontab` as sudo user
 2. Add `@reboot sudo <command | script>`
 3. To run an script, add it to `/usr/local/sbin/<created_script>`
-
-
-## Comments
-
-1. Add plugins configurations inside ```nvim/after/plugin/*.lua```.
-2. To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
-3. Source packer.lua and then run ```:PackerSync```
-4. To install lsp, check :Mason
 
