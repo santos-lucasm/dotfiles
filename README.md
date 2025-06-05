@@ -1,12 +1,9 @@
-### tmux
+## Install tmux
 
 1. External dependencies
 
 ```
 sudo add-apt-repository universe
-```
-
-```
 sudo apt install ripgrep clangd libstdc++-12-dev libevent-dev bison flex libfuse2 stow automake autotools-dev libncurses-dev curl
 ```
 
@@ -29,38 +26,20 @@ sudo cp tmux /usr/local/bin/
 4. Open tmux, type `prefix + I` to install the plugins using the `tmux-plugins/tpm` package
 
 
-### neovim 
+## Install neovim 
 
-1. Install packer
+1. Run the repo neovim installation script that clones neovim packer plugin, downloads and
+extracts neovim v0.11.2 and install the plugins.
 
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
+2. Observations
 
-2. Install nvim from the most recent deploy .appimage and put it in your $PATH.
-
-```
-chmod u+x nvim-linux-x86_64.appimage && ./nvim-linux-x86_64.appimage
-
-// if your system does not have FUSE, extract the app image
-./nvim-linux-x86_64.appimage --appimage-extract
-./squashfs-root/usr/bin/nvim
-
-// symbolic link it to your path
-ln -s /home/<full_path_required>/squashfs-root/usr/bin/nvim /usr/bin/nvim
-```
-
-3. Install plugins
-
+New plugins configurations should be inside ```nvim/after/plugin/*.lua```.
 - To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
 - Source packer.lua and then run ```:PackerSync```
 - To install more LSPs, check :Mason
 
-New plugins configurations should be inside ```nvim/after/plugin/*.lua```.
 
-
-### alacritty
+## Install alacritty
 
 1. Install dependencies
 
@@ -72,13 +51,7 @@ sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfi
 
 ```
 git clone https://github.com/alacritty/alacritty.git
-```
-
-```
 cargo build --release
-```
-
-```
 infocmp alacritty && sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
 ```
 
@@ -86,17 +59,8 @@ infocmp alacritty && sudo tic -xe alacritty,alacritty-direct extra/alacritty.inf
 
 ```
 sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-```
-
-```
 sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-```
-
-```
 sudo desktop-file-install extra/linux/Alacritty.desktop
-```
-
-```
 sudo update-desktop-database
 ```
 
@@ -105,9 +69,6 @@ sudo update-desktop-database
 
 ```
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which alacritty) 50
-```
-
-```
 sudo update-alternatives --config x-terminal-emulator
 ```
 
