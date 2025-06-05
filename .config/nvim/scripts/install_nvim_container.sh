@@ -20,6 +20,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim > /dev/null 2>&1
 
 echo "Creating nvim plugins configuration files symbolic links"
+cd $HOME && mkdir .config/
 ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
 
 echo "Installing nvim plugins..."
