@@ -78,3 +78,27 @@ sudo update-alternatives --config x-terminal-emulator
 2. Add `@reboot sudo <command | script>`
 3. To run an script, add it to `/usr/local/sbin/<created_script>`
 
+## Useful aliases
+
+```
+alias devcode='devcontainer exec --workspace-folder . nvim /workspaces/systemx_io'
+alias deventer='devcontainer exec --workspace-folder . /bin/bash'
+alias devup='devcontainer up --workspace-folder . --remove-existing-container\
+    --dotfiles-repository "https://github.com/santos-lucasm/dotfiles.git"\
+    --dotfiles-install-command ".config/nvim/scripts/install_nvim_container.sh"'
+```
+
+## Error handling
+
+1. `<leader>ps` not working inside neovim
+
+Check error with `:message`, you probably forgot to install `ripgrep` apt lib.
+
+2. File system read-only mode in WSL
+
+```
+mount -v | grep ro // verify the partition name
+sudo e2fsck <partition_name> -y // /dev/sdb
+sudo e2fsck <partition_name> -p
+wsl --shutdown // in windows cmd
+```
