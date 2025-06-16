@@ -53,4 +53,10 @@ return require('packer').startup(function(use)
 
     -- dap
     use { 'mfussenegger/nvim-dap' }
+
+    -- nvim line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)
