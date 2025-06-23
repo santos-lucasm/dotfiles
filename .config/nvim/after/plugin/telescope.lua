@@ -7,7 +7,7 @@ vim.keymap.set('n', '<leader>po', builtin.lsp_document_symbols, {})
 
 -- grep in whole directory
 vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+    builtin.grep_string({ search = vim.fn.input("Grep > "), additional_args = { "--hidden" }});
 end)
 
 -- list buffers
