@@ -1,10 +1,11 @@
 #!/bin/sh
 
+CHECK_OS=$(cat /etc/os-release | grep NAME= | sed -n 2p | cut -d '=' -f 2 | tr -d ' ' | tr -d '"')
 if command -v nvim >/dev/null 2>&1; then
     echo "✅ Neovim already installed"
 else
     echo "Installing neovim..."
-    if command -v hostnamectl | grep Operating | cut -d ':' -f2 | tr -d ' '; then
+    if [ "$CHECK_OS" = Archcraft ]; then
         yay -Sy neovim
     else
         cd $HOME
