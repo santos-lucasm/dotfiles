@@ -6,8 +6,10 @@ if command -v nvim >/dev/null 2>&1; then
 else
     echo "Installing neovim..."
     if [ "$CHECK_OS" = Archcraft ]; then
-        yay -Sy neovim
+        yay -Sy neovim ripgrep
     else
+        sudo apt install ripgrep -y
+
         cd $HOME
         mkdir neovim && cd neovim
         wget https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.appimage > /dev/null 2>&1
