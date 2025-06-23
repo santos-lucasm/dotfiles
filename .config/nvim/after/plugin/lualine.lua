@@ -1,5 +1,5 @@
 require('lualine').setup {
-    options = { theme = 'gruvbox' },
+    options = { theme = 'tokyonight-night' },
     globalstatus = true,
     tabline = {
         lualine_a = { 'windows' },

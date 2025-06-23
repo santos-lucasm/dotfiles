@@ -13,16 +13,14 @@ return require('packer').startup(function(use)
     }
 
     -- Color themes related
-    use { "xiyaowong/transparent.nvim" } -- transparent on all windows
-    use { "ellisonleao/gruvbox.nvim" }
+    -- use { "xiyaowong/transparent.nvim" } -- transparent on all windows
+    -- use { "ellisonleao/gruvbox.nvim" }
+    -- use({ "rose-pine/neovim" })
+    use { "folke/tokyonight.nvim", config = function()
+        vim.cmd('colorscheme tokyonight-night')
+    end
+    }
     use { "nvim-tree/nvim-web-devicons" }
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
