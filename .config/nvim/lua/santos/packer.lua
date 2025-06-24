@@ -7,19 +7,13 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.5', requires = { { 'nvim-lua/plenary.nvim' } } }
 
     -- Color themes related
     -- use { "xiyaowong/transparent.nvim" } -- transparent on all windows
     -- use { "ellisonleao/gruvbox.nvim" }
     -- use({ "rose-pine/neovim" })
-    use { "folke/tokyonight.nvim", config = function()
-        vim.cmd('colorscheme tokyonight-night')
-    end
-    }
+    use { "folke/tokyonight.nvim", config = function() vim.cmd('colorscheme tokyonight-night') end }
     use { "nvim-tree/nvim-web-devicons" }
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -40,14 +34,10 @@ return require('packer').startup(function(use)
 
 
     -- Git
-    use { "tpope/vim-fugitive" }                         -- G<everything>
-    use { "sindrets/diffview.nvim" }                     -- DiffOpen
-    use { "lewis6991/gitsigns.nvim", config = function() -- Hightlight changes
-        require('gitsigns').setup()
-    end }
-    use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
-        require('git-conflict').setup()
-    end }
+    use { "tpope/vim-fugitive" }     -- G<everything>
+    use { "sindrets/diffview.nvim" } -- DiffOpen
+    use { "lewis6991/gitsigns.nvim", config = function() require('gitsigns').setup() end }
+    use { 'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup() end }
 
     -- dap
     use { 'mfussenegger/nvim-dap' }
