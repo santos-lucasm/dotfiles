@@ -53,8 +53,8 @@ return require('packer').startup(function(use)
     use { 'mfussenegger/nvim-dap' }
 
     -- nvim line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+    use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true } }
+
+    -- quickfix (for live search and replace)
+    use { 'stevearc/quicker.nvim', config = function() require("quicker").setup() end }
 end)
