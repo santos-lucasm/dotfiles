@@ -46,8 +46,8 @@ return require('packer').startup(function(use)
     use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true } }
 
     -- quickfix (for live search and replace)
-    use { 'stevearc/quicker.nvim', config = function() require("quicker").setup() end }
+    use { 'stevearc/quicker.nvim', config = function() require('quicker').setup() end }
 
-    -- overseer
-    use { 'stevearc/overseer.nvim', config = function() require("overseer").setup() end }
+    -- overseer (run tasks and commands)
+    use { 'stevearc/overseer.nvim' }
 end)
