@@ -47,4 +47,7 @@ return require('packer').startup(function(use)
 
     -- quickfix (for live search and replace)
     use { 'stevearc/quicker.nvim', config = function() require("quicker").setup() end }
+
+    -- overseer
+    use { 'stevearc/overseer.nvim', config = function() require("overseer").setup() end }
 end)
