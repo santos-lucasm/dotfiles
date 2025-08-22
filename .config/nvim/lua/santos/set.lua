@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.api.nvim_set_keymap("n", "<leader><Tab>", ':tabnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Tab><Tab>", ':tabnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>s", '<C-w>', { noremap = true, silent = true })
 
 vim.opt.guicursor = ""
 
