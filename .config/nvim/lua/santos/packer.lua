@@ -32,6 +32,14 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- force it to respect clang-format
+    use {
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup({
+            })
+        end,
+    }
 
     -- Git
     use { "tpope/vim-fugitive" }     -- G<everything>
