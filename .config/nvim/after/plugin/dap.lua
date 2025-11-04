@@ -15,6 +15,12 @@ dap.configurations.cpp = {
         end,
         cwd = "${workspaceFolder}",
         stopAtBeginningOfMainSubprogram = false,
+        stopAtEntry = true,
+        setupCommands = {
+            text = '-enable-pretty-printing',
+            description = 'enable pretty printing',
+            ignoreFailures = false
+        },
     },
     {
         name = "Select and attach to process",
@@ -44,6 +50,25 @@ dap.configurations.cpp = {
 
 require('dapui').setup({
     -- Other dapui configurations...
+    layouts = {
+        {
+            elements = {
+                { "scopes",      size = 0.25 },
+                { "breakpoints", size = 0.25 },
+                { "stacks",      size = 0.25 },
+                { "watches",     size = 0.25 },
+            },
+            size = 0.30,
+            position = "left",
+        },
+        {
+            elements = {
+                { "repl", size = 1 },
+            },
+            size = 0.20,
+            position = "bottom",
+        },
+    },
 })
 
 -- Open dapui when a debug session launches
