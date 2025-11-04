@@ -40,3 +40,22 @@ dap.configurations.cpp = {
         cwd = '${workspaceFolder}'
     },
 }
+
+
+require('dapui').setup({
+    -- Other dapui configurations...
+})
+
+-- Open dapui when a debug session launches
+dap.listeners.before.launch.dapui_config = function()
+    require("dapui").open()
+end
+
+-- Close dapui when the debug session terminates or exits
+dap.listeners.before.event_terminated.dapui_config = function()
+    require("dapui").close()
+end
+
+dap.listeners.before.event_exited.dapui_config = function()
+    require("dapui").close()
+end
