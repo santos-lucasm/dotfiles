@@ -41,6 +41,7 @@ require("diffview").setup({
 })
 
 vim.keymap.set("n", "<leader>gs", ":Git status<CR>");
+vim.keymap.set("n", "<leader>gl", ":Git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit<CR>");
 vim.keymap.set("n", "<leader>dio", ":DiffviewOpen<CR>");
 vim.keymap.set("n", "<leader>dih", ":DiffviewHistory %<CR>");
 vim.keymap.set("n", "<leader>dic", ":DiffviewClose<CR>");
