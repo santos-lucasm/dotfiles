@@ -85,7 +85,17 @@ alias devcode='devcontainer exec --workspace-folder . nvim /workspaces/systemx_i
 alias deventer='devcontainer exec --workspace-folder . /bin/bash'
 alias devup='devcontainer up --workspace-folder . --remove-existing-container\
     --dotfiles-repository "https://github.com/santos-lucasm/dotfiles.git"\
-    --dotfiles-install-command ".config/nvim/scripts/install_nvim_container.sh"'
+    --dotfiles-install-command ".config/nvim/scripts/install_nvim_container.sh"\
+    --mount type=bind,source=$SSH_AUTH_SOCK,target=/tmp/ssh-auth.sock'
+```
+
+Only mounting `$SSH\_AUTH\_SOCK` is not enough, devcontainers also need to map the environment variable
+inside the container. In `devcontainer.json`, add the following:
+
+```
+"containerEnv": {
+    "SSH_AUTH_SOCK": "/tmp/ssh-auth.sock"
+}
 ```
 
 ## Error handling
@@ -117,3 +127,9 @@ Host github-personal
 And then close this repository with `git clone git@github-personal:santos-lucasm/dotfiles.git`
 
 To test it, you can run `ssh -T git@github-personal`
+
+4. After creating or update your ssh key
+
+The following command resets the ssh-agent: `eval "$(ssh-agent -s)"`
+
+To add the new key: `ssh-add ~/.ssh/id-path-private-key`
