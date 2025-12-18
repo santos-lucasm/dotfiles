@@ -1,31 +1,22 @@
-local overseer = require('overseer').setup()
-
-local mytask_template = {
-    name = "Build",
-    description = "Build the systemx",
-    params = {
-        message = {
-            type = "string",
-            default = "./build.sh",
-            description = "Build command"
-        },
+local overseer = require('overseer').setup({
+    task_list = {
+        direction = "bottom",
+        open_on_start = true,
     },
-    condition = {
-        -- Optional: Conditions for when this template is available (e.g., based on directory)
-        -- dir = vim.fn.getcwd(), -- Only available in the current directory
+    -- Configure components for tasks
+    components = {
+        -- ... other components
+        "open_output", -- Ensure this component is loaded
     },
-    builder = function(params)
-        -- This must return an overseer.TaskDefinition
-        return {
-            cmd = { params.message },
-            name = "Build",
-            cwd = vim.fn.getcwd(),
-        }
-    end,
-}
+    -- Configuration for the open_output component
+    open_output = {
+        -- Options: 'always', 'if_no_on_output_quickfix', 'never'
+        on_start = "always",
+        -- Options: 'dock', 'vsplit', 'hsplit', 'float', 'pedit', 'tab'
+        direction = "dock",
+    },
+})
 
-require('overseer').register_template(mytask_template)
-
-vim.keymap.set("n", "<S-Tab>", ":OverseerToogle<CR>");
-vim.keymap.set("n", "<leader>ovb", ":OverseerBuild<CR>");
+vim.keymap.set("n", "<S-Tab>", ":OverseerToggle<CR>");
+vim.keymap.set("n", "<leader>ovs", ":OverseerShell<CR>");
 vim.keymap.set("n", "<leader>ovr", ":OverseerRun<CR>");
