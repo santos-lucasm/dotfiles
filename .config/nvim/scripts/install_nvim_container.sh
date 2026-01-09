@@ -8,6 +8,7 @@ else
     if [ "$CHECK_OS" = Archcraft ]; then
         yay -Sy neovim ripgrep
     else
+        sudo apt update -qq > /dev/null
         sudo apt install ripgrep -qq -y > /dev/null 2>&1
     fi
 
@@ -30,7 +31,7 @@ fi
 
 NVIM_CFG_DIR=$HOME/.config/nvim
 if [ ! -d $NVIM_CFG_DIR ]; then
-    # verify stow existence, try installing or fallback to symbolic links
+    # TODO: verify stow existence, try installing or fallback to symbolic links
     echo "Creating nvim plugins configuration files symbolic links... "
     cd $HOME
     if [ ! -d $HOME/.config ]; then
