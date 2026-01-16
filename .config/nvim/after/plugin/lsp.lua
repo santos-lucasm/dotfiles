@@ -33,11 +33,31 @@ end)
 -- Handle language servers
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'clangd', 'cmake', 'lua_ls' },
+    ensure_installed = { 'clangd', 'cmake', 'lua_ls', 'pylsp', 'flake8' },
     handlers = {
         lsp_zero.default_setup,
         clangd = function()
-            require('lspconfig').clangd.setup({
+            require('lspconfig').clangd.setup({})
+        end,
+        lua_ls = function()
+            require('lspconfig').lua_ls.setup({})
+        end,
+        pylsp = function()
+            require('lspconfig').pylsp.setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            flake8 = {
+                                enabled = true,
+                                args = { "--max-line-length=120" },
+                            },
+                            -- Disable other linters if desired
+                            pycodestyle = { enabled = false },
+                            pydocstyle = { enabled = false },
+                            mccabe = { enabled = false },
+                        },
+                    },
+                },
             })
         end,
     },
