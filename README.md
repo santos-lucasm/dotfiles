@@ -1,43 +1,11 @@
-## Install tmux
+# Setup
 
-1. External dependencies
+Use the `scripts/set_me_up.sh` to configure a new environment. Check the usage to verify what the script can install.
 
-```
-sudo add-apt-repository universe
-sudo apt install ripgrep clangd libstdc++-12-dev libevent-dev bison flex libfuse2 stow automake autotools-dev libncurses-dev curl
-```
+Tested for:
 
-2. Build from source
-
-```
-git clone https://github.com/tmux/tmux.git
-cd tmux
-sh autogen.sh
-./configure && make
-sudo cp tmux /usr/local/bin/
-```
-
-3. Download tmux plugins repository
-
-```
- git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-4. Open tmux, type `prefix + I` to install the plugins using the `tmux-plugins/tpm` package
-
-
-## Install neovim 
-
-1. Run the repo neovim installation script that clones neovim packer plugin, downloads and
-extracts neovim v0.11.2 and install the plugins.
-
-2. Observations
-
-New plugins configurations should be inside ```nvim/after/plugin/*.lua```.
-- To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
-- Source packer.lua and then run ```:PackerSync```
-- To install more LSPs, check :Mason
-
+- Ubuntu 22.04 LTS
+- Ubuntu 24.04 LTS
 
 ## Install alacritty
 
@@ -78,31 +46,14 @@ sudo update-alternatives --config x-terminal-emulator
 2. Add `@reboot sudo <command | script>`
 3. To run an script, add it to `/usr/local/sbin/<created_script>`
 
-## Useful aliases
-
-```
-alias devcode='devcontainer exec --workspace-folder . nvim /workspaces/systemx_io'
-alias deventer='devcontainer exec --workspace-folder . /bin/bash'
-alias devup='devcontainer up --workspace-folder . --remove-existing-container\
-    --dotfiles-repository "https://github.com/santos-lucasm/dotfiles.git"\
-    --dotfiles-install-command ".config/nvim/scripts/install_nvim_container.sh"\
-    --mount type=bind,source=$SSH_AUTH_SOCK,target=/tmp/ssh-auth.sock'
-```
-
-Only mounting `$SSH\_AUTH\_SOCK` is not enough, devcontainers also need to map the environment variable
-inside the container. In `devcontainer.json`, add the following:
-
-```
-"containerEnv": {
-    "SSH_AUTH_SOCK": "/tmp/ssh-auth.sock"
-}
-```
-
 ## Error handling
 
-1. `<leader>ps` not working inside neovim
+1. New nvim plugins
 
-Check error with `:message`, you probably forgot to install `ripgrep` apt lib.
+New plugins configurations should be inside ```nvim/after/plugin/*.lua```.
+- To install a new plugin using packer, add it to ```nvim/lua/santos/packer.lua```.
+- Source packer.lua and then run ```:PackerSync```
+- To install more LSPs, check :Mason
 
 2. File system read-only mode in WSL
 
