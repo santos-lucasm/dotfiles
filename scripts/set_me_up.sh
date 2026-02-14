@@ -96,6 +96,16 @@ install_fonts () {
     fc-cache -f -v
 }
 
+add_aliases () {
+    echo "alias devcode='devcontainer exec --workspace-folder . nvim /workspaces/${PWD##*/}'" >> ~/.bashrc
+    echo "alias deventer='devcontainer exec --workspace-folder . /bin/bash'" >> ~/.bashrc
+    echo "alias devup='devcontainer up --workspace-folder . --remove-existing-container \
+        --dotfiles-repository \"https://github.com/santos-lucasm/dotfiles.git\" \
+        --dotfiles-install-command \".config/nvim/scripts/install_nvim_container.sh\"'" >> ~/.bashrc
+
+    echo "Don't forget to: source ~/.bashrc!!"
+}
+
 for arg; do
 	if [[ "$arg" == "--all" ]]; then
 		install_deps
@@ -111,6 +121,8 @@ for arg; do
         install_docker
     elif [[ "$arg" == "--fonts" ]]; then
         install_fonts
+    elif [[ "$arg" == "--alias" ]]; then
+        add_aliases
 	else
 		echo "Option $arg not recognized."
         exit 1
