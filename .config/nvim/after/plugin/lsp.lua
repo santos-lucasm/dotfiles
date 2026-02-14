@@ -33,7 +33,7 @@ end)
 -- Handle language servers
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'clangd', 'cmake', 'lua_ls', 'pylsp', 'flake8' },
+    ensure_installed = { 'clangd', 'cmake', 'lua_ls', 'pylsp' },
     handlers = {
         lsp_zero.default_setup,
         clangd = function()
