@@ -26,6 +26,8 @@ install_deps () {
 		pkg-config \
 	    build-essential \
 	    > /dev/null 2>&1
+
+    sudo npm install -g @devcontainers/cli
 }
 
 install_nvim () {
