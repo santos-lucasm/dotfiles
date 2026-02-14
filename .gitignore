@@ -1,1 +1,5 @@
 .config/nvim/plugin/*
+
+# ignore all installed fonts, just keep the reference
+fonts/*
+!fonts/FiraCode.zip

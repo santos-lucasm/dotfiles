@@ -85,12 +85,20 @@ install_docker () {
     fi
 }
 
-for arg in "$@"; do
-	echo "$arg"
+install_fonts () {
+    echo "Installing nerd fonts..."
+    FONTS_DIR=~/dotfiles/fonts
+    mkdir -p ~/.local/share/fonts
+    unzip ${FONTS_DIR}/FiraCode.zip -d ${FONTS_DIR} > /dev/null 2>&1
+    cp ${FONTS_DIR}/*.ttf ~/.local/share/fonts/ > /dev/null 2>&1
+    fc-cache -f -v
+}
+
+for arg; do
 	if [[ "$arg" == "--install-dep" ]]; then
 		install_deps
         stow .
-        install_nvim && install_tmux && install_docker
+        install_nvim && install_tmux && install_docker && install_fonts
 	elif [[ "$arg" == "--install-dep" ]]; then
 		install_deps
 	elif [[ "$arg" == "--nvim" ]]; then
@@ -99,6 +107,8 @@ for arg in "$@"; do
         install_tmux
     elif [[ "$arg" == "--docker" ]]; then
         install_docker
+    elif [[ "$arg" == "--fonts" ]]; then
+        install_fonts
 	else
 		echo "Option $arg not recognized."
         exit 1
