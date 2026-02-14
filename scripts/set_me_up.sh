@@ -95,7 +95,7 @@ install_fonts () {
 }
 
 for arg; do
-	if [[ "$arg" == "--install-dep" ]]; then
+	if [[ "$arg" == "--all" ]]; then
 		install_deps
         stow .
         install_nvim && install_tmux && install_docker && install_fonts
