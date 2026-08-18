@@ -1,7 +1,3 @@
-[user]
-	mail = santos.lucasmmatheus@gmail.com
-	name = santos-lucasm
-	email = santos.lucasmmatheus@gmail.com
 [core]
     editor = nvim
 [alias]

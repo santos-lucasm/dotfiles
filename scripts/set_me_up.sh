@@ -60,7 +60,7 @@ install_tmux () {
     if command -v tmux >/dev/null 2>&1; then
         echo "✅ Tmux already installed."
     else
-        echo "Installing neovim..."
+        echo "Installing tmux..."
         mkdir -p ~/third_party/
         cd ~/third_party/
         git clone https://github.com/tmux/tmux.git > /dev/null 2>&1
@@ -96,6 +96,46 @@ install_fonts () {
     fc-cache -f -v
 }
 
+setup_git () {
+    SSH_PATH="$HOME/.ssh"
+    KEY_PATH="${SSH_PATH}/id_ed25519_github"
+
+    if [ -f "$KEY_PATH" ]; then
+        echo "Github personal key already exists. Exiting..."
+        return 1;
+    fi
+
+    echo "Generating SSH key..."
+    ssh-keygen -t ed25519 -f "$KEY_PATH" -C "santos.lucasmmatheus@gmail.com"
+
+    echo ""
+    echo "Here is the SSH key created (https://github.com/settings/keys):"
+    cat "${KEY_PATH}.pub"
+    echo ""
+
+    echo "Appending to ${SSH_PATH} configuration file..."
+    cat <<EOF >> "$HOME/.ssh/config"
+Host github-personal
+    User git
+    Hostname github.com
+    IdentityFile ${KEY_PATH}
+    IdentitiesOnly yes
+EOF
+
+    echo "Appending to git configuration file..."
+    cat "./git/.gitconfig" >> "$HOME/.gitconfig"
+
+    echo "Setup running ssh-agent"
+    eval "$(ssh-agent -s)"
+    ssh-add ${KEY_PATH}
+
+    echo "Verifying github origin..."
+    git remote set-url origin "git@github-personal:santos-lucasm/dotfiles.git"
+    git remote -v
+    ssh -T git@github-personal
+}
+
+# This does not work consistently, keeps adding aliases to the bash
 add_aliases () {
     echo "alias devcode='devcontainer exec --workspace-folder . nvim /workspaces/${PWD##*/}'" >> ~/.bashrc
     echo "alias deventer='devcontainer exec --workspace-folder . /bin/bash'" >> ~/.bashrc

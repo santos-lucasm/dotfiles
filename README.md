@@ -63,24 +63,3 @@ sudo e2fsck <partition_name> -y // /dev/sdb
 sudo e2fsck <partition_name> -p
 wsl --shutdown // in windows cmd
 ```
-3. Handle work and personal github keys
-
-Add the following to your `~/.ssh/config`
-
-```
-Host github-personal
-    User git
-    Hostname github.com
-    IdentityFile ~/.ssh/id_ed25519_github
-    IdentitiesOnly yes
-```
-
-And then close this repository with `git clone git@github-personal:santos-lucasm/dotfiles.git`
-
-To test it, you can run `ssh -T git@github-personal`
-
-4. After creating or update your ssh key
-
-The following command resets the ssh-agent: `eval "$(ssh-agent -s)"`
-
-To add the new key: `ssh-add ~/.ssh/id-path-private-key`
