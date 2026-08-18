@@ -1,4 +1,4 @@
-.config/nvim/plugin/*
+neovim/.config/nvim/plugin/*
 
 # ignore all installed fonts, just keep the reference
 fonts/*

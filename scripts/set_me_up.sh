@@ -23,7 +23,7 @@ install_deps () {
 	    ca-certificates \
 	    software-properties-common \
 	    npm \
-		pkg-config \
+        pkg-config \
 	    build-essential \
 	    > /dev/null 2>&1
 
@@ -35,8 +35,7 @@ install_nvim () {
 	    echo "✅ Neovim already installed."
 	else
 	    echo "Installing neovim..."
-	    cd $HOME
-	    mkdir -p ~/third_party/neovim && cd ~/third_party/neovim
+	    mkdir -p ~/third_party/neovim && pushd ~/third_party/neovim
 	    wget https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.appimage > /dev/null 2>&1
 	    chmod u+x nvim-linux-x86_64.appimage
 	    ./nvim-linux-x86_64.appimage --appimage-extract
@@ -53,7 +52,8 @@ install_nvim () {
 	fi
 
 	echo "Installing nvim plugins..."
-	nvim --headless -u $HOME/.config/nvim/lua/santos/packer.lua -c 'autocmd User PackerComplete quitall' -c 'PackerSync' > /dev/null 2>&1
+	nvim --headless -u $HOME/neovim/.config/nvim/lua/santos/packer.lua -c 'autocmd User PackerComplete quitall' -c 'PackerSync' > /dev/null 2>&1
+    popd
 }
 
 install_tmux () {
@@ -101,7 +101,7 @@ add_aliases () {
     echo "alias deventer='devcontainer exec --workspace-folder . /bin/bash'" >> ~/.bashrc
     echo "alias devup='devcontainer up --workspace-folder . --remove-existing-container \
         --dotfiles-repository \"https://github.com/santos-lucasm/dotfiles.git\" \
-        --dotfiles-install-command \".config/nvim/scripts/install_nvim_container.sh\"'" >> ~/.bashrc
+        --dotfiles-install-command \"./neovim/.config/nvim/scripts/install_nvim_container.sh\"'" >> ~/.bashrc
 
     echo "Don't forget to: source ~/.bashrc!!"
 }
@@ -109,7 +109,7 @@ add_aliases () {
 for arg; do
 	if [[ "$arg" == "--all" ]]; then
 		install_deps
-        stow .
+        stow --target=$HOME neovim
         install_nvim && install_tmux && install_docker && install_fonts
 	elif [[ "$arg" == "--install-dep" ]]; then
 		install_deps
