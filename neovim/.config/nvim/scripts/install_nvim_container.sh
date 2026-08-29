@@ -37,7 +37,7 @@ if [ ! -d $NVIM_CFG_DIR ]; then
     if [ ! -d $HOME/.config ]; then
         mkdir .config/
     fi
-    ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+    ln -s $HOME/dotfiles/neovim/.config/nvim $HOME/.config/nvim
 else
     echo "✅ Neovim configs already installed"
 fi
