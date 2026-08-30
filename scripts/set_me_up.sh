@@ -93,6 +93,9 @@ install_docker () {
         sudo apt update -y > /dev/null 2>&1
         sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y > /dev/null 2>&1
         sudo usermod -aG docker $USER
+        echo "Add the following line to ~/.docker/config.json file."
+        echo "\"detachKeys\": \"ctrl-e,e\""
+        echo "Restart required to use docker without sudo."
     fi
 }
 
