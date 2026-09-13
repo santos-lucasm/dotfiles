@@ -34,6 +34,7 @@ install_deps () {
 	    software-properties-common \
         stow \
 	    unzip \
+        xclip \
 	    > /dev/null 2>&1
 
     sudo npm install -g @devcontainers/cli
